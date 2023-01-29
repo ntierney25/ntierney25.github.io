@@ -1,38 +1,19 @@
-body{
-    background-color: rgb(6, 7, 14);
+body {
+    background: rgb(0,0,0);
+    color: rgb(45, 45, 45);
+    padding: 10px;
+    font-family: arial;
 }
-h1{
-   font-size: 150%;
-   font-family: fantasy; 
-   color: rgb(240, 247, 238);
-}
-li{
-    font-size: 110%;
-    font-family: fantasy;
-    color: rgb(51, 101, 138);
-}
-
-h3{
-    font-size: 130%;
-    font-family: fantasy;
-    color: rgb(51, 101, 138);
-}
-p{
-    font-size: 130%;
-    font-family: fantasy;
-    color: rgb(51, 101, 138);
-}
-
-
 #all-contents {
   max-width: 800px;
     margin: auto;
 }
 
 /* navigation menu */
-/* nav {
-    background: rgb(239, 80, 41);
+nav {
+    background: rgb(153, 187, 255);
    margin: 0 auto;
+   margin-bottom: 20px;
     display: flex;
     padding: 10px;
 }
@@ -53,11 +34,11 @@ h1 {
 a {
     text-decoration: none;
     color: #fff;
-} */
+}
 
 /* main container area beneath menu */
-/* main {
-    background: rgb(245, 238, 219);
+main {
+    background: rgb(102, 255, 255);
     display: flex;
 }
 .sidebar {
@@ -70,13 +51,21 @@ a {
 .content {
     flex: 1;
     padding: 15px;
-} */
+}
 
 /* portfolio styles */
-/* #interests {
+#interests {
     border: 4px silver ridge;
     padding: 8px;
 }
 h2, h3 {
     margin: 0px;
-} */ 
+}
+
+.sidebar-img {
+    width: 200px;
+}
+.content {
+    flex: 1;
+    padding: 15px;
+}
