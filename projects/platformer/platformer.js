@@ -30,12 +30,17 @@ $(function () {
     // You must decide the x position, y position, width, and height of the platforms
     // example usage: createPlatform(x,y,width,height)
     createPlatform(450,650,100,10);
-    createPlatform(350,550,90,10);
-    createPlatform(200,500,80,10);
-    createPlatform(400,300,60,10);
-    createPlatform(250,390,70,10);
+    createPlatform(350,550,100,10);
+    createPlatform(200,500,100,10);
+    createPlatform(400,300,100,10);
+    createPlatform(250,390,100,10);
     createPlatform(650,650,100,10);
-    createPlatform(750,400,50,10);
+    createPlatform(750,400,100,10);
+    createPlatform(700,375,100,1500);
+    createPlatform(1000,400,100,10);
+    createPlatform(900, 300, 100, 10);
+    createPlatform(1100, 500, 100, 10);
+    createPlatform(500,400,100,10)
     
     
     
@@ -71,7 +76,29 @@ $(function () {
 
 
 
-
+    function incrementScore() {
+      for (var collectable of collectables) {
+        if (
+          collectable.x > player.x &&
+          collectable.x  < player.x + hitBoxWidth &&
+          collectable.y < player.y + hitBoxHeight &&
+          collectable.y  > player.y 
+        ) {
+             score = score + 2;
+             score = score-1
+             document.getElementById("score").innerHTML = score;
+        } else {
+          continue;
+        }
+      }   
+    }
+    
+    function step(){
+      incrementScore();
+      window.requestAnimationFrame(()=>step())
+    }
+    
+    step();
 
 
 

@@ -243,6 +243,7 @@ function collision() {
         platforms[i].width,
         platforms[i].height
       );
+    
     }
   }
   return result;
@@ -338,7 +339,7 @@ function projectileCollision() {
 }
 
 function deathOfPlayer() {
-  ctx.fillStyle = "grey";
+  ctx.fillStyle = "white";
   ctx.fillRect(
     canvas.width / 4,
     canvas.height / 6,
@@ -346,7 +347,7 @@ function deathOfPlayer() {
     canvas.height / 2
   );
   ctx.fillStyle = "black";
-  ctx.font = "800% serif";
+  ctx.font = "fantasy";
   ctx.fillText(
     "You are dead",
     canvas.width / 4,
@@ -481,7 +482,7 @@ function drawCollectables() {
     }
   }
 }
-
+var score = 0
 function collectablesCollide() {
   for (var i = 0; i < collectables.length; i++) {
     if (
@@ -491,9 +492,14 @@ function collectablesCollide() {
       collectables[i].y + collectableHeight > player.y
     ) {
       collectables[i].collected = true;
+     
     }
-  }
+
+
+  }   
 }
+
+
 
 function createPlatform(x, y, width, height) {
   platforms.push({ x, y, width, height });
