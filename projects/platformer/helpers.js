@@ -362,7 +362,7 @@ function deathOfPlayer() {
   );
   if (keyPress.any) {
     keyPress.any = false;
-    resetVariables();
+    window.location.reload();
   }
 }
 
@@ -392,7 +392,7 @@ function playerFrictionAndGravity() {
 
 function drawPlatforms() {
   for (var i = 0; i < platforms.length; i++) {
-    ctx.fillStyle = "grey";
+    ctx.fillStyle = "#f7e1d7";
     ctx.fillRect(
       platforms[i].x,
       platforms[i].y,

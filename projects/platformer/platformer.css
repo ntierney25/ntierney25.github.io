@@ -1,9 +1,11 @@
 body {
   margin: 0px;
+  color: #8bb174;
 }
 
 canvas {
-  background-color: lightgray;
+  background-image: url("./images/download.jpg");
+  background-size: cover;
 }
 
 img {
