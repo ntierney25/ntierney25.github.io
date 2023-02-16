@@ -40,7 +40,8 @@ $(function () {
     createPlatform(1000,400,100,10);
     createPlatform(900, 300, 100, 10);
     createPlatform(1100, 500, 100, 10);
-    createPlatform(500,400,100,10)
+    createPlatform(500,400,100,10);
+    createPlatform(50,300, 100, 10);
     
     
     
@@ -57,8 +58,9 @@ $(function () {
     createCollectable("diamond", 450,600);
     createCollectable("diamond", 650,600);
     createCollectable("diamond", 250,300);
-    createCollectable("diamond", 400,250)
-    
+    createCollectable("diamond", 400,250);
+    createCollectable("diamond", 1100,400);
+    createCollectable("diamond", 900, 250);
     
     
     // TODO 3
@@ -67,47 +69,44 @@ $(function () {
     // Your wall choices are: 'top' 'left' 'right' and 'bottom'
     // example usage: createCannon(side, position, delay)
 
+
     createCannon('top', 500, 1000);
     createCannon('top', 600, 1500);
     createCannon('top', 800, 1000);
     createCannon('top', 200, 1500);
-    createCannon('left', 650, 6000);
-    
-
-
-
-    function incrementScore() {
-      for (var collectable of collectables) {
-        if (
-          collectable.x > player.x &&
-          collectable.x  < player.x + hitBoxWidth &&
-          collectable.y < player.y + hitBoxHeight &&
-          collectable.y  > player.y 
-        ) {
-             score = score + 2;
-             score = score-1
-             document.getElementById("score").innerHTML = score;
-        } else {
-          continue;
-        }
-      }   
-    }
-    
-    function step(){
-      incrementScore();
-      window.requestAnimationFrame(()=>step())
-    }
-    
-    step();
-
-
-
+    createCannon('left', 200, 5000);
+    createCannon('right', 500, 1000)
 
 
     /////////////////////////////////////////////////
     //////////ONLY CHANGE ABOVE THIS POINT///////////
     /////////////////////////////////////////////////
+    var collectObj = {}
+
+    function gameWinner() {      
+
+      for (var i = 0; i < collectables.length; i++) {
+        if (
+          collectables[i].collected
+        ) {
+          collectObj[i] = "collected";
+        }
+      }   
+      if(Object.keys(collectObj).length === collectables.length){
+        alert("You have won!")
+        //break;
+      }
+
+    }
+  
+
+  function update(){
+    if(Object.keys(collectObj).length === collectables.length) return;
+    gameWinner();
+    window.requestAnimationFrame(() => update())
   }
 
+  update();
+  }
   registerSetup(setup);
 });

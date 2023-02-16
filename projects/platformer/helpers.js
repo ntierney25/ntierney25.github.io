@@ -482,7 +482,6 @@ function drawCollectables() {
     }
   }
 }
-var score = 0
 function collectablesCollide() {
   for (var i = 0; i < collectables.length; i++) {
     if (
@@ -492,7 +491,6 @@ function collectablesCollide() {
       collectables[i].y + collectableHeight > player.y
     ) {
       collectables[i].collected = true;
-     
     }
 
 
