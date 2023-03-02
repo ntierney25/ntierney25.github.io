@@ -42,6 +42,8 @@
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 
+			
+
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 50);
 			
@@ -68,6 +70,7 @@
 			
 			var positionX = 0;
 			var points = 0;
+			var speed = 10;
 
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -76,8 +79,16 @@
 			*/
 			function update() {
 				/* code to increase positionX by 10 goes here*/
-				positionX = positionX + 10;
+				positionX = positionX + speed;
 				moveBoxTo(positionX);
+				if(positionX > boardWidth){
+				speed =-speed;
+				}
+				if(positionX < 0){
+				speed =-speed;
+				}
+				
+			
 
 			};
 
@@ -90,6 +101,7 @@
 				positionX = 0;
 				points = points + 1
 				changeBoxText(points);
+				speed+=3;
 
 			};
 		})();
