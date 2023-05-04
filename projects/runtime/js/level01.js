@@ -16,6 +16,7 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
+                // add loads more to make game more enjoyable and then remove the tree
                 { "type": "sawblade", "x": 400, "y": groundY },
                 { "type": "sawblade", "x": 600, "y": groundY },
                 { "type": "sawblade", "x": 900, "y": groundY },
@@ -46,7 +47,7 @@ var level01 = function (window) {
             var hitZoneSize = 25;
             var damageFromObstacle = 10;
             var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
-
+            var sawblade = sawBladeHitZone;
             // todo part b
             sawBladeHitZone.x = x;
             sawBladeHitZone.y = y;
@@ -58,6 +59,15 @@ var level01 = function (window) {
             obstacleImage.x = -hitZoneSize;
 
             game.addGameItem(sawBladeHitZone);
+
+            sawblade.onPlayerCollision = function () {
+                game.increaseScore(-500);
+                sawblade.fadeOut();
+            }
+
+            sawblade.onProjectileCollision = function () {
+                sawblade.fadeOut();
+            }
 
         }
         // createSawBlade(200, 300);
@@ -81,7 +91,10 @@ var level01 = function (window) {
             enemy.velocityX = -5;
             enemy.rotationalVelocity = 5;
 
-            enemy.onPlayerCollision = function () {};
+            enemy.onPlayerCollision = function () {
+                game.increaseScore(-100);
+                enemy.fadeOut();
+            };
             enemy.onProjectileCollision = function () {
                 game.increaseScore(100);
                 enemy.fadeOut();
@@ -146,8 +159,12 @@ var level01 = function (window) {
         }
         
         // spawns the end only if the score is high enough!
-        if (score <= 10000){
+        if (score >= 10000){
             createMarker(1000, groundY)
+        }
+
+        if (score <= -100){
+            startLevel();
         }
     }
         // DO NOT EDIT CODE BELOW HERE
